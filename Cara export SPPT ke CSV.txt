@@ -1,0 +1,3 @@
+-alter system set utl_file_dir='F:\cek' scope=spfile;
+-restart service oracle nya
+-exec exp_sppt_per_kecamatan('F:\cek','csv','2013');

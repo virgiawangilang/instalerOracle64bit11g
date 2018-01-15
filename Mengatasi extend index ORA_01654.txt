@@ -1,0 +1,15 @@
+Cara mengatasi ORA-01654:unable to extend index PBB.(indexnya) by 8 in tablespace USERS 
+
+select a.owner, a.index_name, b.file_name 
+from dba_indexes a, dba_data_files b 
+where a.tablespace_name=b.tablespace_name and a.index_name='I5_2_AK';
+
+select * from dba_indexes where owner='PBB' and index_name='I5_2_AK';
+select * from dba_data_files;
+
+ALTER TABLESPACE USERS
+   ADD DATAFILE 'D:\APP\ORADATA\SISMIOP\USERS01.DBF' SIZE 100M;
+   
+ALTER TABLESPACE USERS AUTOEXTEND ON NEXT 20G;
+
+create tablespace test datafile '/u01/app/oracle/oradata/test/test.dbf' size 1m;
